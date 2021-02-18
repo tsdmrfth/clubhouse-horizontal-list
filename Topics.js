@@ -99,13 +99,15 @@ const Topics = () => {
                 context.offset = leftBound
                 translateX.value = withSpring(leftBound, {
                     velocity: velocityX,
-                    mass: 0.9
+                    mass: 0.6,
+                    stiffness: 90
                 })
             } else if (offset < rightBound) {
                 context.offset = rightBound
                 translateX.value = withSpring(rightBound, {
                     velocity: velocityX,
-                    mass: 0.9
+                    mass: 0.6,
+                    stiffness: 90
                 })
             } else {
                 context.isDecayAnimationRunning = true
