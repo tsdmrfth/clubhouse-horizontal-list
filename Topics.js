@@ -76,7 +76,7 @@ const Topics = () => {
     const topicPositionRef = useRef({})
     const [topicPosition, setTopicPosition] = useState({})
     const translateX = useSharedValue(0)
-    const { container, topicContainer, topicText } = styles
+    const { container, topicContainer, topicText, title } = styles
     const onGestureEvent = useAnimatedGestureHandler({
         onStart: (event, context) => {
             if (context.isDecayAnimationRunning) {
@@ -190,10 +190,15 @@ const Topics = () => {
 
     return (
         <PanGestureHandler {...{ onGestureEvent }}>
-            <Animated.View
-                horizontal
-                style={container}>
-                {topics.map(topic => <Topic key={topic.text} {...{ topic }}/>)}
+            <Animated.View>
+                <Text style={title}>
+                    {'TOPICS TO EXPLORE'}
+                </Text>
+                <Animated.View
+                    horizontal
+                    style={container}>
+                    {topics.map(topic => <Topic key={topic.text} {...{ topic }}/>)}
+                </Animated.View>
             </Animated.View>
         </PanGestureHandler>
     )
@@ -223,6 +228,13 @@ const styles = {
         fontSize: 14,
         fontWeight: '500',
         marginLeft: 5
+    },
+    title: {
+        fontSize: 13,
+        color: 'rgb(134,130,119)',
+        marginBottom: 5,
+        marginLeft: 15,
+        fontWeight: '600'
     }
 }
 
